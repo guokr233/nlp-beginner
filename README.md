@@ -22,7 +22,7 @@
 
 1. 不使用glove词向量：测试集准确度0.65左右
 
-   https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-0.2.png
+   ![glove-update-0.2-2](https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-0.2.png)
 
 3. 使用glove词向量但不更新参数：测试集准确度0.65左右，与1相近
 
