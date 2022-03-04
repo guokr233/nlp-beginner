@@ -1,56 +1,54 @@
-# NLP-Beginner：自然语言处理入门练习
-
-新加入本实验室的同学，请按要求完成下面练习，并提交报告。
-
-*请完成每次练习后把report上传到QQ群中的共享文件夹中的“Reports of nlp-beginner”目录，文件命名格式为“task 1+姓名”。*
-
-参考：
-
-1. [深度学习上手指南](https://github.com/nndl/nndl.github.io/blob/master/md/DeepGuide.md)
-2. 《[神经网络与深度学习](https://nndl.github.io/)》 
-3. 不懂问google
-
-
-
+# NLP-Beginner：自然语言处理入门练习 Report
 
 
 ### 任务一：基于机器学习的文本分类
-
 实现基于logistic/softmax regression的文本分类
 
-1. 参考
-   1. [文本分类](文本分类.md)
-   2. 《[神经网络与深度学习](https://nndl.github.io/)》 第2/3章
-2. 数据集：[Classify the sentiment of sentences from the Rotten Tomatoes dataset](https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews)
-3. 实现要求：NumPy
-4. 需要了解的知识点：
 
-   1. 文本特征表示：Bag-of-Word，N-gram
-   2. 分类器：logistic/softmax  regression，损失函数、（随机）梯度下降、特征选择
-   3. 数据集：训练集/验证集/测试集的划分
-5. 实验：
-   1. 分析不同的特征、损失函数、学习率对最终分类性能的影响
-   2. shuffle 、batch、mini-batch 
-6. 时间：两周
+
 
 ### 任务二：基于深度学习的文本分类
-
 熟悉Pytorch，用Pytorch重写《任务一》，实现CNN、RNN的文本分类；
+#### 2.1 RNN提取特征
+##### 2.1.1 程序流程
 
-1. 参考
+1. 对所有文本通过nltk进行清洗、分词，统计得到词典
+2. 利用词典将句子转成词序号的列表，长的截断，短的补0
+3. 进入embbeding层转成(seq_len, batch_size, embed_size)的词嵌入张量
+4. 通过双向LSTM层得到提取的文本特征（output的）
+5. 经过全连接层进行分类
 
-   1. https://pytorch.org/
-   2. Convolutional Neural Networks for Sentence Classification <https://arxiv.org/abs/1408.5882>
-   3. <https://machinelearningmastery.com/sequence-classification-lstm-recurrent-neural-networks-python-keras/>
-2. word embedding 的方式初始化
-1. 随机embedding的初始化方式
-  2. 用glove 预训练的embedding进行初始化 https://nlp.stanford.edu/projects/glove/
-3. 知识点：
+##### 2.1.2 训练结果
 
-   1. CNN/RNN的特征抽取
-   2. 词嵌入
-   3. Dropout
-4. 时间：两周
+1. 不使用glove词向量：测试集准确度0.65左右
+
+   ![noGlove](/Users/zhanjun/Pictures/task2-output/noGlove.png)
+
+2. 使用glove词向量但不更新参数：测试集准确度0.65左右，与1相近
+
+   ![glove-0.2](/Users/zhanjun/Pictures/task2-output/glove-0.2.png)
+
+3. 使用词向量并更新参数：测试集准确度0.66左右，略高于1、2
+
+   ![glove-update-0.2-2](/Users/zhanjun/Pictures/task2-output/glove-update-0.2-2.png)
+
+##### 2.1.3 遇到的困难
+
+1. 问题：准确度低于别人的实现结果
+
+   解决：run别人的代码，控制变量比较（模型参数、数据的表示方式、数据的组织），最后发现是因为别人只使用了一小部分数据，且打乱了数据
+
+2. 问题：nn.LSTM的使用
+
+   解决：输出的三个张量的含义与维度
+
+   * output： 输出张量，**(seq_len, batch, num_directions \* hidden_size)**，其中双向网络的num_directions为2，单向网络为1
+   * h_n：中间向量，**(num_layers \* num_directions, batch, hidden_size)**
+   * c_n：记忆单元存储的向量，**(num_layers \* num_directions, batch, hidden_size)**
+
+
+
+#### 2.2 CNN提取特征
 
 ### 任务三：基于注意力机制的文本匹配
 
