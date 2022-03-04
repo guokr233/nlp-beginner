@@ -4,6 +4,8 @@
 *.iws
 .idea/
 out/
+task1/data/
+task2/data
 
 # Mac
 .DS_Store
