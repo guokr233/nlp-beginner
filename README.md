@@ -15,22 +15,22 @@
 1. 对所有文本通过nltk进行清洗、分词，统计得到词典
 2. 利用词典将句子转成词序号的列表，长的截断，短的补0
 3. 进入embbeding层转成(seq_len, batch_size, embed_size)的词嵌入张量
-4. 通过双向LSTM层得到提取的文本特征（output的）
+4. 通过双向LSTM层得到提取的文本特征（两个方向上output张量的拼接）
 5. 经过全连接层进行分类
 
 ##### 2.1.2 训练结果
 
 1. 不使用glove词向量：测试集准确度0.65左右
 
-   ![noGlove](/Users/zhanjun/Pictures/task2-output/noGlove.png)
+   https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-0.2.png
 
-2. 使用glove词向量但不更新参数：测试集准确度0.65左右，与1相近
+3. 使用glove词向量但不更新参数：测试集准确度0.65左右，与1相近
 
-   ![glove-0.2](/Users/zhanjun/Pictures/task2-output/glove-0.2.png)
+   ![glove-update-0.2-2](https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-update-0.2-2.png)
 
-3. 使用词向量并更新参数：测试集准确度0.66左右，略高于1、2
+4. 使用词向量并更新参数：测试集准确度0.66左右，略高于1、2
 
-   ![glove-update-0.2-2](/Users/zhanjun/Pictures/task2-output/glove-update-0.2-2.png)
+   ![glove-update-0.2](https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-update-0.2.png)
 
 ##### 2.1.3 遇到的困难
 
