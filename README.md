@@ -22,15 +22,15 @@
 
 1. 不使用glove词向量：测试集准确度0.65左右
 
-   ![glove-update-0.2-2](https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-0.2.png)
+   ![glove-update-0.2-2](https://s2.loli.net/2022/03/05/ig3TpqX2hdLH7a1.png)
 
 3. 使用glove词向量但不更新参数：测试集准确度0.65左右，与1相近
 
-   ![glove-update-0.2-2](https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-update-0.2-2.png)
+   ![glove-update-0.2-2](https://s2.loli.net/2022/03/05/JbwcdghQzTqUsp5.png)
 
 4. 使用词向量并更新参数：测试集准确度0.66左右，略高于1、2
 
-   ![glove-update-0.2](https://raw.githubusercontent.com/guokr233/photos/master/BlogImg/glove-update-0.2.png)
+   ![glove-update-0.2](https://s2.loli.net/2022/03/05/WC5RQEaynv24dKz.png)
 
 ##### 2.1.3 遇到的困难
 
@@ -48,7 +48,17 @@
 
 
 
-#### 2.2 CNN提取特征
+#### 2.2 CNN提取特征(TextCNN)
+
+##### 2.2.1 理论
+
+##### 2.2.2 训练结果
+
+1. 测试集准确度0.65左右，与RNN相近![CNN-2glove](https://s2.loli.net/2022/03/05/kG3MyXZJ7wDubxl.png)
+
+
+
+
 
 ### 任务三：基于注意力机制的文本匹配
 
