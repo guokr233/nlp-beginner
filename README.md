@@ -149,11 +149,11 @@
 
      在第11个epoch后测试集准确度最高，为86.2%
 
-     <img src="https://s2.loli.net/2022/03/09/2VEbrXdQkINKGuc.png" alt="myplot" style="zoom: 67%;" />
+     <img src="https://s2.loli.net/2022/03/09/2VEbrXdQkINKGuc.png" alt="myplot" style="zoom: 50%;" />
 
    * loss
 
-     <img src="https://s2.loli.net/2022/03/09/quN6K78D1t4vePG.png" alt="loss1" style="zoom:67%;" />
+     <img src="https://s2.loli.net/2022/03/09/quN6K78D1t4vePG.png" alt="loss1" style="zoom: 50%;" />
 
 #### 3.3 遇到的困难
 
