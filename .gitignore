@@ -5,7 +5,9 @@
 .idea/
 out/
 task1/data/
-task2/data
+task2/data/
+task3/data/
+task3/snli_1.0
 
 # Mac
 .DS_Store
