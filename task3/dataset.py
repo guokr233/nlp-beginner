@@ -134,32 +134,6 @@ def words2id(vocab_dic, words, max_len):
     return pad(vec)
 
 
-def analysis_len(sents):
-    sents_len = [len(sent) for sent in sents]
-    sents_len = sorted(sents_len)
-    nums = len(sents_len)
-    print("70%: ", sents_len[int(0.7 * nums)])
-    print("80%: ", sents_len[int(0.8 * nums)])
-    print("90%: ", sents_len[int(0.9 * nums)])
-    print("95%: ", sents_len[int(0.95 * nums)])
-    print("99%: ", sents_len[int(0.99 * nums)])
-    plt.rcParams['font.sans-serif'] = ['Arial Unicode MS']
-    plt.figure(figsize=(30, 12), dpi=100)
-    plt.subplot(2, 3, 2)
-    plt.title("句子长度分布")
-    plt.hist(sents_len, bins=list(range(0, max(sents_len) + 1, 1)))
-    plt.xlabel('句子长度')
-    plt.ylabel('句子数量')
-    """ title 累计分布"""
-    plt.subplot(2, 3, 5)
-    plt.title('累计分布图')
-    plt.hist(sents_len, bins=list(range(0, max(sents_len) + 1, 1)), cumulative=True)
-    plt.xlabel('句子长度')
-    plt.ylabel('累计比例(%)')
-
-    plt.savefig("sent_len.png")
-
-
 def sents2matrix(sents, w2id_dict, max_len, if_save=True, save_path=None):
     tokenized_data = get_tokenized_sent(sents)
     sents_length = [min(len(sent), max_len) for sent in tokenized_data]
