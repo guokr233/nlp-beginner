@@ -224,8 +224,8 @@ RNN语言模型
 
 * 困惑度
 
-  <img src="/Users/zhanjun/NLP/nlp-beginner/task5/output/preplexity.png" alt="preplexity" style="zoom:72%;" />
+  <img src="https://s2.loli.net/2022/03/14/P1ONdZv7hBsa9by.png" alt="preplexity" style="zoom:72%;" />
 
 * 以日月光华 旦复旦兮为句首生成的诗
 
-  <img src="/Users/zhanjun/Library/Application Support/typora-user-images/image-20220313113032285.png" alt="image-20220313113032285" style="zoom:67%;" />
+  <img src="https://s2.loli.net/2022/03/14/OI2zNfSHZ6JRLYn.png" alt="image-20220313113032285" style="zoom:67%;" />
