@@ -40,11 +40,16 @@
 
    解决：run别人的代码，控制变量比较（模型参数、数据的表示方式、数据的组织），最后发现是因为别人只使用了一小部分数据，且打乱了数据
 
-2. 问题：nn.LSTM的使用
-
-   解决：输出的三个张量的含义与维度
-
-   * output： 输出张量，**(seq_len, batch, num_directions \* hidden_size)**，其中双向网络的num_directions为2，单向网络为1
+2. 学习ßnn.LSTM的使用
+    outputs, (h_n, c_n) = nn.LSTM(inputs) 
+   
+   or 
+   
+   outputs, (h_n, c_n) = nn.LSTM(inputs, hidden)
+   
+   * inputs：输入张量，**(seq_len, batch, embed_size)**
+   * hidden：自己指定的隐藏变量（可选），LSTM的hidden为包含两个tensor的tuple，分别为h和c，维度为**(1, batch, hidden_size)**
+   * outputs： 输出张量，**(seq_len, batch, num_directions \* hidden_size)**，其中双向网络的num_directions为2，单向网络为1
    * h_n：中间向量，**(num_layers \* num_directions, batch, hidden_size)**
    * c_n：记忆单元存储的向量，**(num_layers \* num_directions, batch, hidden_size)**
 
@@ -207,3 +212,20 @@
 
 用LSTM、GRU来训练字符级的语言模型，计算困惑度
 
+#### 5.1 训练
+
+RNN语言模型
+
+1. 输入：（batch, max_len），不足最大长度的用0填充
+2. 经过嵌入层：（batch, max_len, embed_size）
+3. 经过LSTM进行编码，再经过一个全连接层进行分类，分别得到以部分前缀预测下一个字的概率：P(w2 | w1)、P(w3 | w1 w2)、P(w4 | w1w2w3)……P(wn | w1w2w3…wn-1)，长度为max_len-1，原句中后max_len-1个字一一对应为实际标签，两者可计算交叉熵，并完成训练
+
+#### 5.2 结果
+
+* 困惑度
+
+  <img src="/Users/zhanjun/NLP/nlp-beginner/task5/output/preplexity.png" alt="preplexity" style="zoom:72%;" />
+
+* 以日月光华 旦复旦兮为句首生成的诗
+
+  <img src="/Users/zhanjun/Library/Application Support/typora-user-images/image-20220313113032285.png" alt="image-20220313113032285" style="zoom:67%;" />
