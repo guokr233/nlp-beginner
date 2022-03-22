@@ -72,7 +72,8 @@ def get_tokenized_sent(sents):
     def tokenizer(text):
         words = word_tokenize(text)
         words = [word.lower() for word in words
-                 if word.isalpha() and word not in stopWords]
+                 if word.isalpha()]
+        # and word not in stopWords
         return words
     return [tokenizer(review) for review in sents]
 
